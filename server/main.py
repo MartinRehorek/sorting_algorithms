@@ -1,6 +1,7 @@
 from algorithms.selection import selection_sort
 from algorithms.insertion import insertion_sort
 import sys
+import time
 
 def algorithms_available():
     algos = []
@@ -25,15 +26,20 @@ def main():
             input_array.append(int(element))
         except:
             print(f'Could not add: ', element)
-    print(input_array)
+    #print(input_array)
+    print('')
     # choose a sorting algo
     print(f"Choose out of these sorting algorithms: {', '.join(available_algorithms)}")
     while True:
         user_choice_algorithm = input('Enter a sorting algorithm of your choice: ')
         if user_choice_algorithm in available_algorithms:
             break
+    print('')
     # execute the user choice algo
+    start_time = time.time()
     sorted_array = globals()[user_choice_algorithm + "_sort"](input_array)
+    print(sorted_array)
+    print("--- It took %s seconds ---" % (time.time() - start_time))
 
     # each iteration printed
     # final time?
